@@ -48,9 +48,6 @@
 
             <input class="btn btn-primary mb-3" name="btn" type="submit" value="Acceder" id="submit" > 
 
-            <br>
-            <a  href="#">Pagina de visualizacion del blog</a>
-
         </form>
     </div>
 
