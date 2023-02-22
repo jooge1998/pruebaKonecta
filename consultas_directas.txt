@@ -1,0 +1,15 @@
++++++++++++++++++++++ CONSULTAS DIRECTAS ++++++++++++++++++
+
+
+1) Realizar una consulta que permita conocer cuál es el producto que más stock tiene.
+
+SELECT * FROM `producto` WHERE STOCK = (SELECT MAX(STOCK) FROM producto)   ;
+
+
+
+2) Realizar una consulta que permita conocer cuál es el producto más vendido
+
+
+SELECT id_producto FROM `ventas` WHERE CANTIDAD = (SELECT MAX(CANTIDAD) FROM ventas)
+
+select p.id, p.NOMBRE_PRODUCTO, p.REFERENCIA,p.PESO,p.CATEGORIA,p.STOCK, p.FECHA_CREACION,v.cantidad from producto as p inner join ventas as v on p.id = v.id_producto where v.id_producto = (SELECT id_producto FROM `ventas` WHERE CANTIDAD = (SELECT MAX(CANTIDAD) FROM ventas));
