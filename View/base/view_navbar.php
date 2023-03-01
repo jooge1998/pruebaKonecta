@@ -29,7 +29,7 @@ $controller = new ControllerViews();
         rel="stylesheet">
 
     <!-- Custom styles for this template-->
-    <link rel="stylesheet" href="/dasboard/View/assets/css/sb-admin-2.css ">
+    <link rel="stylesheet" href="./assets/css/sb-admin-2.css ">
 
     <link href="./assets/vendor/datatables/dataTables.bootstrap4.min.css" rel="stylesheet">
 
@@ -222,7 +222,7 @@ $controller = new ControllerViews();
                                 </h6>
                                 <a class="dropdown-item d-flex align-items-center" href="#">
                                     <div class="dropdown-list-image mr-3">
-                                        <img class="rounded-circle" src="/dasboard/View/assets/img/undraw_profile_1.svg"
+                                        <img class="rounded-circle" src="./assets/img/undraw_profile_1.svg"
                                             alt="...">
                                         <div class="status-indicator bg-success"></div>
                                     </div>
@@ -284,7 +284,7 @@ $controller = new ControllerViews();
                                      ?>
                                 </span>
                                 <img class="img-profile rounded-circle"
-                                    src="/dasboard/View/assets/img/undraw_profile.svg">
+                                    src="./assets/img/undraw_profile.svg">
                             </a>
                             <!-- Dropdown - User Information -->
                             <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in"
