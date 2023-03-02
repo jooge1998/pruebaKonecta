@@ -18,8 +18,10 @@ class ControllerComprar
         if (isset($_POST['salvar'])) {
             #llama al metodo create
 
-            //Verifica el stock del producto
-            if ($this->VerificarStock($_POST['id'], $_POST['cantidad'])) {
+
+
+            //Verifica el stock del producto y valida la cantidad no sea negativa
+            if ($this->VerificarStock($_POST['id'], $_POST['cantidad']) and $_POST['cantidad']>= 0) {
 
                 //Verifica que el producto halla sido comprado anteriormente
                 if ($this->VerificarProducto($_POST['id'])) {

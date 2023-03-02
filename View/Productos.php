@@ -24,6 +24,15 @@ $controllers = new ControllerProductos();
 </div>";
   }
 
+  if (isset($_GET['alerta'])) {
+    echo "<div class='alert alert-danger' role='alert'>
+    campos vacios o campos invalidos
+</div>";
+  }
+
+  
+
+
   ?>
 
   <!-- Inicio Modal Agregar -->
@@ -38,15 +47,15 @@ $controllers = new ControllerProductos();
         <div class="modal-body">
           <form action="./ruteador.php?controller=Productos&action=create" method="post">
 
-            <input class="form-control mb-3" type="text" name="name" placeholder="Nombre Producto" required>
+            <input class="form-control mb-3" type="text" name="name" placeholder="Nombre Producto" required >
 
-            <input class="form-control mb-3" type="number" name="peso" placeholder="Peso Producto" required>
+            <input class="form-control mb-3" type="number" name="peso" placeholder="Peso Producto" required >
 
-            <input class="form-control mb-3" type="number" name="precio" placeholder="Precio" required>
+            <input class="form-control mb-3" type="number" name="precio" placeholder="Precio" required >
 
-            <input class="form-control mb-3" type="text" name="referencia" placeholder="Referencia" required>
+            <input class="form-control mb-3" type="text" name="referencia" placeholder="Referencia" required >
 
-            <input class="form-control mb-3" type="number" name="stock" placeholder="Stock" required>
+            <input class="form-control mb-3" type="number" name="stock" placeholder="Stock" required >
 
             <label for="">
               Categorias
@@ -80,7 +89,7 @@ $controllers = new ControllerProductos();
             <label for="">
               Fecha Creacion
 
-              <input class="form-control mt-3" type="date" name="fecha" required>
+              <input class="form-control mt-3" type="date" name="fecha" >
 
             </label>
 

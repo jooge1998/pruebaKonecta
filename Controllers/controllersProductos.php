@@ -9,13 +9,22 @@ class ControllerProductos{
 
         $productos = new Productos();
 
-        #verifica si el boton agregar con el name salvar fue presionado
-        if(isset($_POST['salvar'])){
-            #llama al metodo create
-            $productos->create();
+        /* valida que los campos no este vacios o halla negativos */
+        if($_POST['name'] == "" or $_POST['peso'] <= 0 or $_POST['precio'] <= 0 or $_POST['referencia'] == "" or $_POST['stock'] <= 0 ){
 
-            header('location: ./Productos.php');
+            header('location: ./Productos.php?alerta=valid');
+        }else{
+
+            #verifica si el boton agregar con el name salvar fue presionado
+            if(isset($_POST['salvar'])){
+                #llama al metodo create
+                $productos->create();
+
+                header('location: ./Productos.php');
+            }
         }
+
+      
 
     }
 
