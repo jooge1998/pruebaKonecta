@@ -62,6 +62,9 @@ $controllers = new ControllerProductos();
             </label>
             <select name="categoria" class="form-select" aria-label="Default select example">
 
+            
+            <option selected value="">Seleccione</option>
+
               <?php
 
 
@@ -71,7 +74,6 @@ $controllers = new ControllerProductos();
 
 
               $datos = $controllers2->getAll();
-
 
               foreach ($datos as $key => $value) {
               ?>
@@ -116,7 +118,7 @@ $controllers = new ControllerProductos();
     <div class="modal-dialog">
       <div class="modal-content">
         <div class="modal-header">
-          <h5 class="modal-title" id="staticBackdropLabel">Editar Cliente</h5>
+          <h5 class="modal-title" id="staticBackdropLabel">Editar Producto</h5>
           <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
         </div>
 

@@ -10,8 +10,16 @@ class ControllerProductos{
         $productos = new Productos();
 
         /* valida que los campos no este vacios o halla negativos */
-        if($_POST['name'] == "" or $_POST['peso'] <= 0 or $_POST['precio'] <= 0 or $_POST['referencia'] == "" or $_POST['stock'] <= 0 ){
-
+        if(
+            $_POST['name'] == "" 
+            or $_POST['peso'] <= 0 
+            or $_POST['precio'] <= 0 
+            or $_POST['referencia'] == "" 
+            or $_POST['stock'] <= 0 
+            or $_POST['fecha'] == "" 
+            or $_POST['categoria'] == ""
+        ){
+        
             header('location: ./Productos.php?alerta=valid');
         }else{
 
@@ -101,13 +109,31 @@ class ControllerProductos{
 
         $productos = new Productos();
 
-        #verifica si hay una solicitud de tipo de get
-        if(isset($_POST['editar'])){
-            #llama al metodo delete delete
-            $productos->update($_GET['id']);
+        /* VALIDACIONES */
+        if(
+            $_POST['name'] == "" 
+            or $_POST['peso'] <= 0 
+            or $_POST['precio'] <= 0 
+            or $_POST['referencia'] == "" 
+            or $_POST['stock'] <= 0 
+            or $_POST['fecha'] == "" 
+            or $_POST['categoria'] == ""
+        ){
 
-            header('location: ./Productos.php');
-        }
+            header('location: ./Productos.php?alerta=valid');
+
+           } else{
+                   #verifica si hay una solicitud de tipo de get
+                    if(isset($_POST['editar'])){
+                        #llama al metodo delete delete
+                        $productos->update($_GET['id']);
+
+                        header('location: ./Productos.php');
+                    }
+
+            }
+
+     
         
     }
 
