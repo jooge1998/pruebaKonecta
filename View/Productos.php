@@ -47,53 +47,11 @@ $controllers = new ControllerProductos();
         <div class="modal-body">
           <form action="./ruteador.php?controller=Productos&action=create" method="post">
 
-            <input class="form-control mb-3" type="text" name="name" placeholder="Nombre Producto" required >
+            <!-- formulario -->
 
-            <input class="form-control mb-3" type="number" name="peso" placeholder="Peso Producto" required >
-
-            <input class="form-control mb-3" type="number" name="precio" placeholder="Precio" required >
-
-            <input class="form-control mb-3" type="text" name="referencia" placeholder="Referencia" required >
-
-            <input class="form-control mb-3" type="number" name="stock" placeholder="Stock" required >
-
-            <label for="">
-              Categorias
-            </label>
-            <select name="categoria" class="form-select" aria-label="Default select example">
-
-            
-            <option selected value="">Seleccione</option>
-
-              <?php
-
-
-              include_once './../Model/categorias.php';
-              $controllers2 = new Categorias();
-
-
-
-              $datos = $controllers2->getAll();
-
-              foreach ($datos as $key => $value) {
-              ?>
-
-                <option value="<?php echo $datos[$key]->ID_CATEGORIA ?>"><?php echo $datos[$key]->CATEGORIA ?></option>
-
-              <?php
-              };
-              ?>
-
-
-
-            </select>
-
-            <label for="">
-              Fecha Creacion
-
-              <input class="form-control mt-3" type="date" name="fecha" >
-
-            </label>
+            <?php
+              include './form_productos.php';
+            ?>
 
         </div>
 
@@ -125,53 +83,29 @@ $controllers = new ControllerProductos();
         <div class="modal-body">
           <form id='formEdit' action="" method="post">
 
-            <input class="form-control mb-3" type="text" name="name" placeholder="Nombre Producto" required>
+            <!-- formulario -->
 
-            <input class="form-control mb-3" type="number" name="peso" placeholder="Peso Producto" required>
+            <?php
+              include './form_productos.php';
+            ?>
 
-            <input class="form-control mb-3" type="number" name="precio" placeholder="Precio" required>
-
-            <input class="form-control mb-3" type="text" name="referencia" placeholder="Referencia" required>
-
-            <input class="form-control mb-3" type="number" name="stock" placeholder="Stock" required>
-
-            <label for="">
-              Categorias
-            </label>
-            <select name="categoria" class="form-select" aria-label="Default select example">
-
-              <?php
+        </div>
 
 
-              include_once './../Model/categorias.php';
-              $controllers2 = new Categorias();
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+          <input name="editar" value="Editar" type="submit" class="btn btn-primary">
+        </div>
 
+        </form>
 
+      </div>
+    </div>
+  </div>
 
-              $datos = $controllers2->getAll();
-
-
-              foreach ($datos as $key => $value) {
-              ?>
-
-                <option value="<?php echo $datos[$key]->ID_CATEGORIA ?>"><?php echo $datos[$key]->CATEGORIA ?></option>
-
-              <?php
-              };
-              ?>
-
-
-
-            </select>
-
-            <label for="">
-              Fecha Creacion
-
-              <input class="form-control mt-3" type="date" name="fecha" required>
-
-            </label>
-
-            <script>
+<!-- funcion  -->
+  
+  <script>
               function enviar(datos) {
 
                 //console.log(datos['name'])
@@ -190,20 +124,6 @@ $controllers = new ControllerProductos();
 
               }
             </script>
-
-        </div>
-
-
-        <div class="modal-footer">
-          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
-          <input name="editar" value="Editar" type="submit" class="btn btn-primary">
-        </div>
-
-        </form>
-
-      </div>
-    </div>
-  </div>
 
   <!-- Fin Modal Editar -->
 
