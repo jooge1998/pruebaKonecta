@@ -6,7 +6,6 @@ echo "<link href='https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstra
 
 require_once "./base/view_navbar.php";
 
-
 include_once './../Controllers/controllersProductos.php';
 $controllers = new ControllerProductos();
 
@@ -81,7 +80,7 @@ $controllers = new ControllerProductos();
         </div>
 
         <div class="modal-body">
-          <form id='formEdit' action="" method="post">
+          <form action="./ruteador.php?controller=Productos&action=update" method="post">
 
             <!-- formulario -->
 
@@ -106,24 +105,63 @@ $controllers = new ControllerProductos();
 <!-- funcion  -->
   
   <script>
-              function enviar(datos) {
+             
+              let modalEdit = document.getElementById('staticBackdrop1');
 
-                //console.log(datos['name'])
-                const formEdit = document.getElementById('formEdit');
+                modalEdit.addEventListener('shown.bs.modal',(e) =>{
+                console.log('entro');
 
-                // le agrega la ruta al action del formulario
-                formEdit.setAttribute('action', './ruteador.php?controller=Productos&action=update&id=' + datos['id']);
 
-                document.getElementsByName('name')[1].value = datos['name'];
-                document.getElementsByName('peso')[1].value = datos['peso'];
-                document.getElementsByName('precio')[1].value = datos['precio'];
-                document.getElementsByName('referencia')[1].value = datos['referencia'];
-                document.getElementsByName('stock')[1].value = datos['stock'];
-                document.getElementsByName('categoria')[1].value = datos['categoria'];
-                document.getElementsByName('fecha')[1].value = datos['fecha'];
+                /* obtiene el id del boton seleccionado */
+                let button = e.relatedTarget
+                id = button.getAttribute('data-bs-id')
+
+                Inputid = modalEdit.querySelector('.modal-body #id')
+                nombre = modalEdit.querySelector('.modal-body #name')
+                peso = modalEdit.querySelector('.modal-body #peso')
+                precio = modalEdit.querySelector('.modal-body #precio')
+                referencia = modalEdit.querySelector('.modal-body #referencia')
+                categoria = modalEdit.querySelector('.modal-body #categoria')
+                fecha = modalEdit.querySelector('.modal-body #fecha')
+                stock = modalEdit.querySelector('.modal-body #stock')
+
+
+                let url = './ruteador.php?controller=Productos&action=getbyId&id='+ id;
+
+                peticion(url)
+               
+
+              })
+
+              /* peticion  */
+
+              function peticion(url){
+
+                /* let formData = new FormData()
+                formData.append('id',id); */
+
+
+                fetch(url,{
+                  method:"GET"
+                }).then(response =>  response.json())
+                  .then(data =>{
+
+                    console.log(data)
+
+                      Inputid.value = data.ID
+                      nombre.value = data.NOMBRE_PRODUCTO
+                      peso.value = data.PESO
+                      referencia.value = data.REFERENCIA
+                      categoria.value = data.CATEGORIA
+                      precio.value = data.PRECIO
+                      fecha.value = data.FECHA_CREACION
+                      stock.value = data.STOCK
+
+                }).cath(err => console.log(err))
 
               }
-            </script>
+  
+                      </script>
 
   <!-- Fin Modal Editar -->
 

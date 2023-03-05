@@ -51,10 +51,9 @@ if (isset($_GET['alert2'])) {
 include_once './../Controllers/controllersProductos.php';
 $controllers = new ControllerProductos;
 
-$producto = $controllers->getId($_GET['id']);
+$producto =  json_decode($controllers->getId($_GET['id'])) ;
 
 //print_r($producto);
-
 
 ?>
 

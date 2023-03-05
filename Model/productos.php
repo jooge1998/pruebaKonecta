@@ -67,7 +67,7 @@ class Productos extends DATABASE{
       }
 
       // Actualiza un resgistro por Id
-      public function update($id){
+      public function update(){
         try{
             $stm=$this->getConnection()->prepare("UPDATE $this->table SET CATEGORIA = ?,FECHA_CREACION = ?,NOMBRE_PRODUCTO = ? ,PESO = ?,PRECIO = ?,REFERENCIA = ?,STOCK = ?  WHERE ID = ?");
 
@@ -79,8 +79,7 @@ class Productos extends DATABASE{
                 $_POST['precio'],
                 $_POST['referencia'],
                 $_POST['stock'],
-                $id,
-                
+                $_POST['id']                
         ]);
 
         }catch(PDOException $e){

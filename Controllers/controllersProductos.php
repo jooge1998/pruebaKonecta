@@ -59,19 +59,6 @@ class ControllerProductos{
         $cont = 1;
         #recorre todos los datos en la base de datos
         foreach ($productos->getAll() as $key => $value) {
-            
-            $datos = array(
-                        "categoria" => $value->CATEGORIA,
-                        "fecha" => $value->FECHA_CREACION,
-                        "name"=> $value->NOMBRE_PRODUCTO,
-                        "peso" => $value->PESO,
-                        "precio" => $value->PRECIO,
-                        "referencia" => $value->REFERENCIA,
-                        "stock" => $value->STOCK,
-                        "id" =>$value->ID
-                    );
-
-            $json = json_encode($datos);
 
             echo "<tr>";
             echo  "<th scope='row'>".$cont."</th>";
@@ -89,7 +76,7 @@ class ControllerProductos{
 
             <a href='./ruteador.php?controller=Productos&action=delete&id=$value->ID' class='btn btn-danger mr-1'>ELIMINAR</a> 
              
-            <a class='btn btn-primary mr-1' data-bs-toggle='modal' data-bs-target='#staticBackdrop1' onclick='enviar( $json)'> EDITAR</a>
+            <a class='btn btn-primary mr-1' data-bs-toggle='modal' data-bs-target='#staticBackdrop1' data-bs-id='$value->ID'> EDITAR</a>
 
             <a href='./../View/Comprar.php?id=$value->ID' class='btn btn-success mr-1'>COMPRAR</a> 
             </div>
@@ -126,7 +113,7 @@ class ControllerProductos{
                    #verifica si hay una solicitud de tipo de get
                     if(isset($_POST['editar'])){
                         #llama al metodo delete delete
-                        $productos->update($_GET['id']);
+                        $productos->update();
 
                         header('location: ./Productos.php');
                     }
@@ -160,12 +147,28 @@ class ControllerProductos{
     }
 
     #imprime el numero de registros en tabla productos
-    public function getId($id){
+    public function getId(){
         require_once("./../Model/productos.php");
 
         $productos = new Productos();
 
-        return $productos->getById($id);
+        $data = $productos->getById($_GET['id']);
+
+        //echo json_encode($data);
+        return json_encode($data);
+        
+    }
+
+    
+    #imprime el numero de registros en tabla productos
+    public function getbyId(){
+        require_once("./../Model/productos.php");
+
+        $productos = new Productos();
+
+        $data = $productos->getById($_GET['id']);
+
+        echo json_encode($data);
         
     }
 
